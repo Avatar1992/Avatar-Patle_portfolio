@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Avatar Patle | DevOps & Cloud Engineer</title>
+
+  <!-- Pico CSS Framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Base Styles ===== */
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav, footer {
+      background-color: #1e293b;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+
+    h1, h2, h3 {
+      color: #38bdf8;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    }
+
+    a {
+      color: #38bdf8;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #facc15;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 5rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      animation: bg-move 10s infinite alternate;
+      position: relative;
+    }
+
+    @keyframes bg-move {
+      from { background-position: 0 0; }
+      to { background-position: 100% 100%; }
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
+
+    .typing {
+      font-family: 'JetBrains Mono', monospace;
+      color: #facc15;
+      border-right: 3px solid #facc15;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(40) 1s 1 normal both, blink 0.75s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 1rem auto 0;
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      border-radius: 12px;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+    }
+
+    /* ===== About Section ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .about-img:hover {
+      transform: rotateY(6deg) rotateX(2deg) scale(1.03);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      filter: brightness(0.9) contrast(1.05);
+    }
+
+    /* ===== Skill Badges ===== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .skill-badge {
+      background-color: #1e293b;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 0.6rem 1.1rem;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .skill-badge:hover {
+      background-color: #38bdf8;
+      color: #0f172a;
+      box-shadow: 0 0 15px #38bdf8;
+      transform: scale(1.1);
+    }
+
+    /* ===== Projects ===== */
+    #projects article {
+      background-color: rgba(15, 23, 42, 0.6);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(56,189,248,0.2);
+      margin-bottom: 1rem;
+    }
+
+    #projects article:hover {
+      box-shadow: 0 0 15px rgba(56,189,248,0.5);
+      transform: translateY(-5px);
+    }
+
+    /* ===== Contact Section ===== */
+    #contact {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    #contact form input,
+    #contact form button {
+      border-radius: 8px;
+    }
+
+    #contact button {
+      background-color: #38bdf8;
+      color: #0f172a;
+      transition: all 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #facc15;
+      box-shadow: 0 0 15px #facc15;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Avatar Patle</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" role="button">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Hi, I'm <span style="color:#facc15;">Avatar Patle</span></h1>
+    <h4 class="typing">DevOps | Cloud (AWS) | Kubernetes | Docker | CI/CD | Terraform | Python | Monitoring & Automation</h4>
+    <p>
+      As a DevOps & Cloud Engineer with experience spanning cloud infrastructure and CI/CD automation,
+      I bring strong expertise in AWS, Docker, Kubernetes, Jenkins, Terraform, and Ansible — with a solid
+      foundation in telecom protocols and networking. Skilled in building and managing cloud-native telecom
+      applications, optimizing performance, and automating deployments for scalability, reliability, and security.
+    </p>
+  </section>
+
+  <!-- About Section -->
+  <main class="container">
+    <section id="about">
+      <hgroup>
+        <h2>About Me</h2>
+        <h3>Automation • Cloud • Scalability</h3>
+      </hgroup>
+
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm a <strong>DevOps & Cloud Engineer</strong> passionate about automation,
+            cloud computing, and infrastructure as code. I specialize in designing scalable,
+            secure, and fault-tolerant environments across AWS, Azure, and hybrid platforms.
+          </p>
+          <p>
+            My focus is on enhancing software delivery through containerization,
+            CI/CD pipelines, and observability tools — ensuring continuous improvement and reliability.
+          </p>
+        </div>
+
+        <figure class="about-img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80" alt="DevOps engineer coding setup" />
+         
+        </figure>
+      </div>
+
+      <h3>Skills & Tools</h3>
+      <div class="skills">
+        <span class="skill-badge">AWS</span>
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">Docker</span>
+        <span class="skill-badge">Kubernetes</span>
+        <span class="skill-badge">Terraform</span>
+        <span class="skill-badge">Ansible</span>
+        <span class="skill-badge">Jenkins</span>
+        <span class="skill-badge">GitHub Actions</span>
+        <span class="skill-badge">Prometheus</span>
+        <span class="skill-badge">Grafana</span>
+        <span class="skill-badge">Linux</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Projects -->
+  <main class="container">
+    <section id="projects">
+      <hgroup>
+        <h2>Featured Projects</h2>
+        <h3>Real-world Automation & Cloud Solutions</h3>
+      </hgroup>
+
+      <article>
+        <h3>📊 Telecom NOC ETL Dashboard</h3>
+        <p>Developed a real-time ETL pipeline to process telecom OSS alarms using Python, PostgreSQL, Flask, and Chart.js for live visualization dashboards.</p>
+      </article>
+
+      <article>
+        <h3>🧩 Django To-Do App on Minikube</h3>
+        <p>Deployed a Django-based To-Do application on Kubernetes (Minikube) integrated with Prometheus and Grafana for full monitoring and observability.</p>
+      </article>
+
+      <article>
+        <h3>🚀 CI/CD Pipeline with Jenkins & Docker</h3>
+        <p>Designed a fully automated CI/CD pipeline that delivers containerized microservices using Jenkins, Docker, and GitHub webhooks — reducing deployment time by 80%.</p>
+      </article>
+
+      <article>
+        <h3>🧱 Two-Tier Flask-MySQL App</h3>
+        <p>Built a two-tier Flask application (Flask frontend + MySQL backend) using Docker containers networked for seamless communication and deployment.</p>
+      </article>
+
+      <article>
+        <h3>☁️ Kubernetes Cluster on AWS EKS</h3>
+        <p>Provisioned and managed a production-grade EKS cluster with autoscaling, centralized monitoring (Prometheus + Grafana), and secure secret management via AWS KMS.</p>
+      </article>
+
+      <article>
+        <h3>🧠 Infrastructure as Code with Terraform</h3>
+        <p>Automated infrastructure provisioning using modular Terraform templates for version-controlled, repeatable, and scalable cloud deployments.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Get In Touch</h2>
+          <h3>Let’s collaborate on your next DevOps or Cloud project 🚀</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Your Name" aria-label="Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Email" required />
+          <button type="submit" onclick="event.preventDefault()">Send Message</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container">
+    <small>
+      <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226/" target="_blank">LinkedIn</a> •
+      <a href="https://github.com/Avatar1992?tab=repositories" target="_blank">GitHub</a> •
+      <a href="mailto:patleavatar@gmail.com">Email</a>
+    </small>
+  </footer>
+
+</body>
+</html>
+
