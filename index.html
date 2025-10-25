@@ -1,335 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Avatar Patle | DevOps & Cloud Engineer</title>
+  <title>Avatar Singh Patle — DevOps & Cloud Engineer</title>
 
-  <!-- Pico CSS Framework -->
+  <!-- Pico CSS (lightweight base) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <!-- Google Fonts -->
+
+  <!-- Google Fonts (Font A: Poppins + JetBrains Mono) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Base Styles ===== */
-    body {
-      background-color: #0f172a;
-      color: #e2e8f0;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
+    :root{
+      --bg-start: #071028;
+      --bg-end:   #0b132b;
+      --panel: rgba(255,255,255,0.04); /* glass panel tint */
+      --panel-strong: rgba(255,255,255,0.06);
+      --accent: #38bdf8;
+      --accent-2: #facc15;
+      --muted: #93a3b6;
+      --glass-border: rgba(255,255,255,0.08);
+      --btn-radius: 999px; /* pill shape (Shape 2) */
     }
 
-    nav, footer {
-      background-color: #1e293b;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    /* Single background applied to entire page */
+    html,body { height: 100%; }
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color: #e6eef8;
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    h1, h2, h3 {
-      color: #38bdf8;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    /* NAV */
+    nav.container-fluid{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:.7rem 1rem;
+      background: transparent; /* keep single background visible */
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      backdrop-filter: blur(4px);
+    }
+    nav strong{color:var(--accent);font-size:1.05rem;}
+    nav ul{display:flex;gap:.65rem;align-items:center;margin:0;padding:0;list-style:none;}
+    nav a{color:var(--muted);text-decoration:none;}
+    nav a:hover{color:var(--accent-2);}
+
+    /* HERO (uses the single page background) */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:1.6rem;
+      align-items:center;
+      padding:3rem 1rem;
     }
 
-    a {
-      color: #38bdf8;
-      transition: color 0.3s ease;
+    .hero-left h1{
+      margin:0 0 .3rem 0;
+      font-size:2.15rem;
+      color:var(--accent);
+      letter-spacing:0.2px;
+    }
+    .role{ color:var(--accent-2); font-weight:600; margin-bottom:.4rem; }
+    .hero-left p{ color:var(--muted); max-width:760px; margin-top:.6rem; line-height:1.55; }
+
+    /* DP */
+    .hero-right{display:flex;justify-content:center;align-items:center;}
+    .dp-wrap{
+      width:300px;height:300px;border-radius:50%;
+      padding:6px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(250,204,21,0.03));
+      box-shadow:0 10px 40px rgba(2,6,23,0.6), inset 0 0 30px rgba(56,189,248,0.02);
+      display:flex;align-items:center;justify-content:center;
+      transition:transform .32s ease, box-shadow .32s ease;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .dp-wrap:hover{ transform:scale(1.03); box-shadow:0 18px 48px rgba(2,6,23,0.75); }
+    .dp-wrap img{ width:100%; height:100%; object-fit:cover; border-radius:50%; display:block; filter:contrast(1.02) saturate(1.03); }
+
+    /* Buttons (pill style) */
+    .hero-actions{ margin-top:1.05rem; display:flex; gap:.6rem; flex-wrap:wrap; }
+    .btn-cta{
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:.62rem .95rem; font-weight:700; text-decoration:none;
+      border-radius:var(--btn-radius); border:none; cursor:pointer;
+      transition: box-shadow .18s ease, transform .12s ease;
+      color:#041025;
+    }
+    .btn-primary{ background: var(--accent); color:#041025; box-shadow: 0 6px 18px rgba(56,189,248,0.08); }
+    .btn-primary:hover{ transform:translateY(-3px); box-shadow: 0 18px 40px rgba(56,189,248,0.14); }
+    .btn-ghost{
+      background: transparent; color:var(--accent); border:1px solid var(--glass-border);
+      backdrop-filter: blur(6px);
+    }
+    .btn-ghost:hover{ background: rgba(56,189,248,0.03); box-shadow: 0 10px 30px rgba(56,189,248,0.06); }
+
+    /* Main container — cards use glass look but single page background remains */
+    main.container{ max-width:1100px; margin:1.75rem auto; padding:0 1rem; }
+
+    .card{
+      background: var(--panel);
+      border-radius:12px;
+      padding:1.4rem;
+      margin-bottom:1.05rem;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px) saturate(1.02);
+      box-shadow: 0 6px 28px rgba(2,6,23,0.6);
     }
 
-    a:hover {
-      color: #facc15;
-    }
+    /* About layout */
+    #about .about-grid{ display:grid; grid-template-columns: 1fr 320px; gap:1rem; align-items:center; }
 
-    /* ===== Hero Section ===== */
-    .hero {
-      text-align: center;
-      padding: 6rem 1rem 5rem;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-      animation: bg-move 10s infinite alternate;
-      position: relative;
-    }
+    .skills{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:.6rem; justify-content:flex-start; }
+    .badge{ background: rgba(255,255,255,0.02); padding:.45rem .8rem; border-radius:999px; font-family:'JetBrains Mono',monospace; color:var(--accent); border: 1px solid rgba(255,255,255,0.02); }
 
-    @keyframes bg-move {
-      from { background-position: 0 0; }
-      to { background-position: 100% 100%; }
-    }
+    /* Projects */
+    .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; margin-top:.6rem; }
+    .project{ padding:1rem; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02); }
+    .project h3{ margin:0 0 .35rem 0; color:var(--accent); }
+    .project p{ color:var(--muted); margin-bottom:.6rem; }
+    .project .project-btn{ display:inline-block; padding:.45rem .85rem; border-radius:var(--btn-radius); background:var(--accent); color:#041025; text-decoration:none; font-weight:700; }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
-    }
+    /* Resume layout (glass) */
+    #resume .resume-grid{ display:grid; grid-template-columns: 1fr 340px; gap:1.1rem; margin-top:.6rem; }
+    .cv-left{ padding-right:0.25rem; }
+    .cv-section{ margin-bottom:1rem; }
+    .cv-section h4{ margin:.18rem 0 .5rem 0; color:var(--accent); font-size:1rem; }
 
-    .typing {
-      font-family: 'JetBrains Mono', monospace;
-      color: #facc15;
-      border-right: 3px solid #facc15;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-      animation: typing 4s steps(40) 1s 1 normal both, blink 0.75s infinite;
-    }
+    .timeline{ list-style:none; padding:0; margin:0; color:var(--muted); }
+    .timeline li{ margin-bottom:.6rem; }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+    /* Right aside (quick card) */
+    aside.quick-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.02); }
 
-    .hero p {
-      max-width: 800px;
-      margin: 1rem auto 0;
-      color: #94a3b8;
-      font-size: 1.1rem;
+    /* Contact form — dark inputs */
+    #contact input[type="text"],
+    #contact input[type="email"]{
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      color: #e6eef8;
+      padding:.58rem .7rem;
+      border-radius:8px;
     }
-
-    /* ===== Sections ===== */
-    section {
-      border-radius: 12px;
-      background: rgba(30, 41, 59, 0.4);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      padding: 3rem 2rem;
-      margin: 3rem 0;
+    #contact input:focus{
+      outline: none;
+      box-shadow: 0 6px 20px rgba(56,189,248,0.08);
+      border-color: rgba(56,189,248,0.6);
     }
+    #contact button.btn-cta{ background:var(--accent); color:#041025; border-radius:var(--btn-radius); padding:.6rem 1rem; font-weight:700; border:none; }
 
-    /* ===== About Section ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      align-items: center;
-    }
+    footer.container{ padding:1rem; text-align:center; color:var(--muted); font-size:.95rem; margin-top:1rem; }
 
-    .about-img {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-
-    .about-img:hover {
-      transform: rotateY(6deg) rotateX(2deg) scale(1.03);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
-    }
-
-    .about-img img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      filter: brightness(0.9) contrast(1.05);
-    }
-
-    /* ===== Skill Badges ===== */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8rem;
-      margin-top: 2rem;
-    }
-
-    .skill-badge {
-      background-color: #1e293b;
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-      padding: 0.6rem 1.1rem;
-      border-radius: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      transition: all 0.3s ease;
-    }
-
-    .skill-badge:hover {
-      background-color: #38bdf8;
-      color: #0f172a;
-      box-shadow: 0 0 15px #38bdf8;
-      transform: scale(1.1);
-    }
-
-    /* ===== Projects ===== */
-    #projects article {
-      background-color: rgba(15, 23, 42, 0.6);
-      padding: 1.5rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(56,189,248,0.2);
-      margin-bottom: 1rem;
-    }
-
-    #projects article:hover {
-      box-shadow: 0 0 15px rgba(56,189,248,0.5);
-      transform: translateY(-5px);
-    }
-
-    /* ===== Contact Section ===== */
-    #contact {
-      background: linear-gradient(145deg, #1e293b, #0f172a);
-      padding: 4rem 1rem;
-      text-align: center;
-    }
-
-    #contact form input,
-    #contact form button {
-      border-radius: 8px;
-    }
-
-    #contact button {
-      background-color: #38bdf8;
-      color: #0f172a;
-      transition: all 0.3s ease;
-    }
-
-    #contact button:hover {
-      background-color: #facc15;
-      box-shadow: 0 0 15px #facc15;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      color: #94a3b8;
+    /* Responsive adjustments */
+    @media (max-width:920px){
+      .hero{ grid-template-columns: 1fr; text-align:center; gap:1rem; }
+      .hero-right{ margin-top:.25rem; }
+      .hero-left p{ margin:0 auto; }
+      #about .about-grid{ grid-template-columns: 1fr; }
+      #resume .resume-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Navigation -->
-  <nav class="container-fluid">
-    <ul>
-      <li><strong>Avatar Patle</strong></li>
-    </ul>
+  <!-- NAV -->
+  <nav class="container-fluid" role="navigation" aria-label="Main navigation">
+    <div><strong>Avatar Singh Patle</strong></div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact" role="button">Contact</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Hi, I'm <span style="color:#facc15;">Avatar Patle</span></h1>
-    <h5 class="typing">DevOps | AWS Cloud | Python</h5>
-    <h5> Monitoring & Automation</h5>
-    <p>
-      As a DevOps & Cloud Engineer with experience spanning cloud infrastructure and CI/CD automation.
-    </p>
-  </section>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="hero-left">
+      <h1>AVATAR SINGH PATLE</h1>
+      <div class="role">DevOps & AWS Cloud Engineer — 5.2+ years</div>
+      <p>
+        I design and maintain CI/CD pipelines, automate cloud infrastructure (Terraform / CloudFormation / Ansible),
+        and operate containerized workloads on AWS (ECS, EKS, Fargate). I focus on scalable, secure systems with strong monitoring and automation.
+      </p>
 
-  <!-- About Section -->
-  <main class="container">
-    <section id="about">
-      <hgroup>
-        <h2>About Me</h2>
-        <h3>Automation • Cloud • Scalability</h3>
-      </hgroup>
+      <div class="hero-actions" aria-label="Primary actions">
+        <a class="btn-cta btn-primary" href="Avatar_Resume.pdf" download>⬇️ Download Resume</a>
+        <a class="btn-cta btn-ghost" href="#resume">📄 View Resume</a>
+        <a class="btn-cta btn-ghost" href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-cta btn-ghost" href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
 
+    <div class="hero-right">
+      <div class="dp-wrap" title="Avatar Singh Patle">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGF2zMzck-Fdw/profile-displayphoto-scale_400_400/B4DZk8ScfXGkAg-/0/1757653093641?e=1762992000&v=beta&t=RuQJF6v2mM-GPTETnvxPUmpVr1LEy2e395emI4XxmTU" alt="Avatar Singh Patle — profile photo" />
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container" role="main">
+    <!-- ABOUT -->
+    <section id="about" class="card" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
       <div class="about-grid">
         <div>
-          <p>
-            I'm a <strong>DevOps & Cloud Engineer</strong> passionate about automation,
-            cloud computing, and infrastructure as code. I specialize in designing scalable,
-            secure, and fault-tolerant environments across AWS, Azure, and hybrid platforms.
+          <p style="color:var(--muted);margin-top:.3rem">
+            I'm a DevOps & Cloud Engineer passionate about automation, observability and building repeatable infrastructure.
+            I specialize in containerization, CI/CD, and secure cloud architectures across AWS and hybrid environments.
           </p>
-          <p>
-            My focus is on enhancing software delivery through containerization,
-            CI/CD pipelines, and observability tools — ensuring continuous improvement and reliability.
-          </p>
+
+          <div style="margin-top:.6rem">
+            <strong style="color:var(--accent)">Contact</strong>
+            <div style="color:var(--muted);margin-top:.35rem">
+              <div>Email: <a href="mailto:Patleavatar@gmail.com">Patleavatar@gmail.com</a></div>
+              <div>Phone: <a href="tel:+919009120469">+91 90091 20469</a></div>
+              <div>Location: Pune, India</div>
+            </div>
+          </div>
         </div>
 
-        <figure class="about-img">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80" alt="DevOps engineer coding setup" />
-         
-        </figure>
+        <aside style="text-align:center;">
+          <div style="border-radius:10px;padding:.6rem;background:transparent;border:1px solid rgba(255,255,255,0.02);">
+            <div style="font-weight:700;color:var(--accent);">Key Skills</div>
+            <div class="skills" style="justify-content:center;margin-top:.6rem;">
+              <span class="badge">AWS</span>
+              <span class="badge">Terraform</span>
+              <span class="badge">Docker</span>
+              <span class="badge">Kubernetes</span>
+              <span class="badge">Jenkins</span>
+              <span class="badge">Prometheus</span>
+            </div>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <h3>Skills & Tools</h3>
-      <div class="skills">
-        <span class="skill-badge">AWS</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">Docker</span>
-        <span class="skill-badge">Kubernetes</span>
-        <span class="skill-badge">Terraform</span>
-        <span class="skill-badge">Ansible</span>
-        <span class="skill-badge">Jenkins</span>
-        <span class="skill-badge">GitHub Actions</span>
-        <span class="skill-badge">Prometheus</span>
-        <span class="skill-badge">Grafana</span>
-        <span class="skill-badge">Linux</span>
+    <!-- PROJECTS -->
+    <section id="projects" class="card" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Featured Projects</h2>
+      <p style="color:var(--muted);margin-top:.3rem">Real-world automation & cloud solutions — click to view code.</p>
+
+      <div class="projects-grid" role="list">
+        <article class="project" role="listitem">
+          <h3>📊 Telecom NOC ETL Dashboard</h3>
+          <p>Real-time ETL pipeline to process telecom OSS alarms — Python, PostgreSQL, Flask, Chart.js for live visualization.</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/telecom-noc-app" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>🧩 Django To-Do App on Minikube</h3>
+          <p>Django app deployed on Minikube with Prometheus & Grafana for monitoring.</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/Django_To-Do_App_on_Minikube" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>🚀 CI/CD Pipeline (Jenkins & Docker)</h3>
+          <p>Automated CI/CD delivering containerized microservices using Jenkins, Docker, and GitHub webhooks.</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/Django_To-Do_App_CI_CD" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>🧱 Two-Tier Flask + MySQL App</h3>
+          <p>Two-tier Flask frontend + MySQL backend, containerized and networked with Docker.</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>☁️ Kubernetes Cluster on AWS EKS</h3>
+          <p>Production-grade EKS setup: autoscaling, monitoring (Prometheus + Grafana), secrets management (KMS).</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>🧠 Infrastructure as Code with Terraform</h3>
+          <p>Modular Terraform templates for repeatable and scalable cloud deployments.</p>
+          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
       </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="card" aria-labelledby="resume-heading">
+      <h2 id="resume-heading">Resume</h2>
+      <p style="color:var(--muted);margin-top:.25rem;font-size:.93rem;">
+        Resume source: uploaded PDF. :contentReference[oaicite:0]{index=0}
+      </p>
+
+      <div class="resume-grid">
+        <!-- Left: Resume content -->
+        <div class="cv-left">
+          <div class="cv-section">
+            <h3 style="color:var(--accent);margin:0">Summary</h3>
+            <p style="color:var(--muted);margin-top:.45rem;line-height:1.45">
+              Over 5.2 years of experience as a DevOps & Cloud Engineer. Design, implement, and maintain CI/CD pipelines and automate build, test, and deployment processes.
+              Skilled in Terraform, CloudFormation, Ansible, Prometheus, Grafana, Python and shell scripting. Experienced in architecting and managing AWS environments and implementing IAM-based security best practices.
+            </p>
+          </div>
+
+          <div class="cv-section">
+            <h4>Experience</h4>
+            <ul class="timeline">
+              <li>
+                <strong>Reliance Property Project Limited, Pune</strong><br/>
+                <em>DevOps Cloud Support Engineer — Sep 2020 to present</em>
+                <ul style="color:var(--muted);margin-top:.35rem">
+                  <li>Ensure builds and deployments run smoothly; fix broken pipelines and failed deployments.</li>
+                  <li>Optimize pipeline performance and reduce build times.</li>
+                  <li>Manage containerized deployments (ECS, EKS, Fargate) and automate infrastructure (CloudFormation/Terraform).</li>
+                  <li>Work with AWS services: EC2, S3, RDS, IAM, VPC, etc.</li>
+                </ul>
+              </li>
+
+              <li style="margin-top:.6rem">
+                <strong>Accord Synergy Ltd, Pune</strong><br/>
+                <em>RNO (Airtel - Nokia Project) — Jul 2019 to Sep 2020</em>
+                <div style="color:var(--muted);margin-top:.3rem">
+                  Improved network efficiency, configured and maintained routers & switches, and worked with VLANs and routing protocols (OSPF, BGP).
+                </div>
+              </li>
+
+              <li style="margin-top:.6rem">
+                <strong>Secure Link Pvt Ltd, Pune</strong><br/>
+                <em>Project Coordinator — Feb 2017 to Jul 2019</em>
+                <div style="color:var(--muted);margin-top:.3rem">
+                  Managed project deliverables, DPR & MDB, coordinated cross-functional teams and tracked P&L for project tasks.
+                </div>
+              </li>
+
+              <li style="margin-top:.6rem">
+                <strong>Syncroute Infranet Pvt Ltd (MH)</strong><br/>
+                <em>DT Engineer — Mar 2016 to Feb 2017</em>
+                <div style="color:var(--muted);margin-top:.3rem">KPI improvement, customer complaint handling and throughput optimization.</div>
+              </li>
+
+              <li style="margin-top:.6rem">
+                <strong>Ahead Industry Pvt Ltd</strong><br/>
+                <em>DT Engineer — Mar 2015 to Feb 2016</em>
+                <div style="color:var(--muted);margin-top:.3rem">KPI analysis and customer support for network performance.</div>
+              </li>
+
+              <li style="margin-top:.6rem">
+                <strong>Mphasis, Indore</strong><br/>
+                <em>Tech C.S.R — Mar 2014 to Feb 2015</em>
+                <div style="color:var(--muted);margin-top:.3rem">Customer support & technical assistance.</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-section">
+            <h4>Education</h4>
+            <div style="color:var(--muted)">
+              <strong>RGPV, Bhopal</strong> — B.E. in Electronic & Telecommunication Engineering, 2013<br/>
+              <strong>MP Board</strong> — 12th (2009) & 10th (2007)
+            </div>
+          </div>
+
+          <div class="cv-section">
+            <h4>Languages</h4>
+            <div style="color:var(--muted)">English, Hindi</div>
+          </div>
+        </div>
+
+        <!-- Right: Quick info card -->
+        <aside class="quick-card">
+          <div style="text-align:center;margin-bottom:.6rem">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGF2zMzck-Fdw/profile-displayphoto-scale_400_400/B4DZk8ScfXGkAg-/0/1757653093641?e=1762992000&v=beta&t=RuQJF6v2mM-GPTETnvxPUmpVr1LEy2e395emI4XxmTU" alt="Avatar Patle" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid rgba(56,189,248,0.06)" />
+          </div>
+
+          <div style="margin-bottom:.55rem">
+            <strong style="color:var(--accent)">Contact</strong>
+            <div style="color:var(--muted);margin-top:.4rem">
+              <div><a href="mailto:Patleavatar@gmail.com">Patleavatar@gmail.com</a></div>
+              <div><a href="tel:+919009120469">+91 90091 20469</a></div>
+              <div style="margin-top:.4rem"><a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a></div>
+              <div style="margin-top:.25rem"><a href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a></div>
+            </div>
+          </div>
+
+          <div style="margin-top:.5rem">
+            <strong style="color:var(--accent)">Skills & Tools</strong>
+            <div style="margin-top:.45rem;color:var(--muted);line-height:1.5">
+              Linux (Shell) • Jenkins • GitHub Actions • Argo CD • Terraform • Ansible • Docker • Kubernetes • AWS • Prometheus • Grafana
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;text-align:center">
+            <a class="btn-cta btn-primary" href="Avatar_Resume.pdf" download>⬇️ Download Resume</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p style="color:var(--muted)">Want to work together or need help with a cloud project? Send a quick message.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Thanks — email: Patleavatar@gmail.com');" style="margin-top:.6rem; display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; justify-content:center;">
+        <input type="text" placeholder="Your name" aria-label="name" required style="max-width:420px;" />
+        <input type="email" placeholder="Your email" aria-label="email" required style="max-width:420px;" />
+        <button class="btn-cta" type="submit" style="background:var(--accent); color:#041025; border-radius:var(--btn-radius); padding:.6rem 1rem; font-weight:700; border:none;">Send Message</button>
+      </form>
     </section>
   </main>
 
-  <!-- Projects -->
-  <main class="container">
-    <section id="projects">
-      <hgroup>
-        <h2>Featured Projects</h2>
-        <h3>Real-world Automation & Cloud Solutions</h3>
-      </hgroup>
-
-      <article>
-        <h3>📊 Telecom NOC ETL Dashboard</h3>
-        <p>Developed a real-time ETL pipeline to process telecom OSS alarms using Python, PostgreSQL, Flask, and Chart.js for live visualization dashboards.</p>
-      </article>
-
-      <article>
-        <h3>🧩 Django To-Do App on Minikube</h3>
-        <p>Deployed a Django-based To-Do application on Kubernetes (Minikube) integrated with Prometheus and Grafana for full monitoring and observability.</p>
-      </article>
-
-      <article>
-        <h3>🚀 CI/CD Pipeline with Jenkins & Docker</h3>
-        <p>Designed a fully automated CI/CD pipeline that delivers containerized microservices using Jenkins, Docker, and GitHub webhooks — reducing deployment time by 80%.</p>
-      </article>
-
-      <article>
-        <h3>🧱 Two-Tier Flask-MySQL App</h3>
-        <p>Built a two-tier Flask application (Flask frontend + MySQL backend) using Docker containers networked for seamless communication and deployment.</p>
-      </article>
-
-      <article>
-        <h3>☁️ Kubernetes Cluster on AWS EKS</h3>
-        <p>Provisioned and managed a production-grade EKS cluster with autoscaling, centralized monitoring (Prometheus + Grafana), and secure secret management via AWS KMS.</p>
-      </article>
-
-      <article>
-        <h3>🧠 Infrastructure as Code with Terraform</h3>
-        <p>Automated infrastructure provisioning using modular Terraform templates for version-controlled, repeatable, and scalable cloud deployments.</p>
-      </article>
-    </section>
-  </main>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <article>
-        <hgroup>
-          <h2>Get In Touch</h2>
-          <h3>Let’s collaborate on your next DevOps or Cloud project 🚀</h3>
-        </hgroup>
-        <form class="grid">
-          <input type="text" id="firstname" name="firstname" placeholder="Your Name" aria-label="Name" required />
-          <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Email" required />
-          <button type="submit" onclick="event.preventDefault()">Send Message</button>
-        </form>
-      </article>
+  <footer class="container" role="contentinfo">
+    <div>
+      <a href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a> •
+      <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a> •
+      <a href="mailto:Patleavatar@gmail.com">Email</a>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="container">
-    <small>
-      <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226/" target="_blank">LinkedIn</a> •
-      <a href="https://github.com/Avatar1992?tab=repositories" target="_blank">GitHub</a> •
-      <a href="mailto:patleavatar@gmail.com">Email</a>
-    </small>
+    <div style="margin-top:.35rem;color:var(--muted)">© Avatar Singh Patle — DevOps & Cloud Engineer</div>
   </footer>
-
 </body>
 </html>
-
+```
