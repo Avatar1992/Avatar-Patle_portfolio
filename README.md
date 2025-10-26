@@ -31,16 +31,6 @@ AWS • Docker • Kubernetes • Terraform • Jenkins • GitHub Actions • A
 
 ---
 
-### 📌 Architecture Diagram Previews _(coming in next update)_
-> These will be added as part of Level-B Step-3 & Step-4
-
-- CI/CD Flow → (Jenkins → Docker → GitHub → Deployment)
-- EKS Production Architecture
-- ETL Alarm Processing Flow
-- Monitoring Stack (Prometheus + Grafana)
-
----
-
 ### 📍 About Me
 DevOps & AWS Cloud Engineer with 5.2+ years of experience in:
 
