@@ -245,48 +245,184 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="card" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Featured Projects</h2>
-      <p style="color:var(--muted);margin-top:.3rem">Real-world automation & cloud solutions — click to view code.</p>
+  <!-- ===== Projects (Glassmorphic Grid) - REPLACE your current <section id="projects"> with this block ===== -->
+<section id="projects" class="card" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" style="margin:0;color:var(--accent);">Featured Projects</h2>
+  <p style="color:var(--muted);margin-top:.45rem">Real-world automation & cloud solutions — click to view code, demo or read case study.</p>
 
-      <div class="projects-grid" role="list">
-        <article class="project" role="listitem">
-          <h3>📊 Telecom NOC ETL Dashboard</h3>
-          <p>Real-time ETL pipeline to process telecom OSS alarms — Python, PostgreSQL, Flask, Chart.js for live visualization.</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/telecom-noc-app" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+  <style>
+    /* Scoped styles for Projects Grid - paste inside index.html as-is */
+    #projects .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 0.75rem;
+    }
 
-        <article class="project" role="listitem">
-          <h3>🧩 Django To-Do App on Minikube</h3>
-          <p>Django app deployed on Minikube with Prometheus & Grafana for monitoring.</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/Django_To-Do_App_on_Minikube" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+    #projects .card-proj{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: transform .22s ease, box-shadow .22s ease;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.45);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:160px;
+    }
+    #projects .card-proj:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 48px rgba(56,189,248,0.06);
+    }
 
-        <article class="project" role="listitem">
-          <h3>🚀 CI/CD Pipeline (Jenkins & Docker)</h3>
-          <p>Automated CI/CD delivering containerized microservices using Jenkins, Docker, and GitHub webhooks.</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/Django_To-Do_App_CI_CD" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+    #projects .proj-title{color:var(--accent);margin:0 0 .3rem 0;font-size:1.02rem;}
+    #projects .proj-desc{color:var(--muted);font-size:.95rem;margin:0 0 .7rem 0;line-height:1.45}
 
-        <article class="project" role="listitem">
-          <h3>🧱 Two-Tier Flask + MySQL App</h3>
-          <p>Two-tier Flask frontend + MySQL backend, containerized and networked with Docker.</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+    /* tech icons row */
+    #projects .tech-row{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.6rem;}
+    #projects .tech-pill{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:.25rem .45rem;border-radius:999px;font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:.82rem;}
 
-        <article class="project" role="listitem">
-          <h3>☁️ Kubernetes Cluster on AWS EKS</h3>
-          <p>Production-grade EKS setup: autoscaling, monitoring (Prometheus + Grafana), secrets management (KMS).</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+    /* pill buttons (BTN-1 match) */
+    #projects .btn-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:auto;}
+    .proj-btn{
+      display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:999px;font-weight:800;
+      text-decoration:none;color:#041026;background:linear-gradient(90deg,var(--accent),#2bb1ee);
+      border:1px solid rgba(255,255,255,0.03);
+      transition:box-shadow .16s ease, transform .12s ease;
+      font-size:.86rem;
+    }
+    .proj-btn:hover{box-shadow:0 10px 28px rgba(56,189,248,0.12);transform:translateY(-2px);}
 
-        <article class="project" role="listitem">
-          <h3>🧠 Infrastructure as Code with Terraform</h3>
-          <p>Modular Terraform templates for repeatable and scalable cloud deployments.</p>
-          <a class="project-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">View on GitHub</a>
-        </article>
+    /* ghost button variant */
+    .proj-btn-ghost{
+      background:transparent;color:var(--accent);border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);font-weight:700;
+    }
+    .proj-btn-ghost:hover{background:rgba(255,255,255,0.02);color:var(--accent-2);}
+
+    @media (max-width:720px){
+      #projects .card-proj{min-height:185px;}
+    }
+  </style>
+
+  <div class="grid" role="list">
+    <!-- 1 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">📊 Telecom NOC ETL Dashboard</h3>
+        <p class="proj-desc">Real-time ETL pipeline to process OSS alarms — Python, PostgreSQL, Flask, and Chart.js for live visualization and alerting.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Postgres</span>
+          <span class="tech-pill">Flask</span>
+          <span class="tech-pill">Chart.js</span>
+        </div>
       </div>
-    </section>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/telecom-noc-app" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#etl">📌 Case Study</a>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">🧩 Django To-Do App on Minikube</h3>
+        <p class="proj-desc">Kubernetes deployment on Minikube with Prometheus & Grafana for full monitoring and alerts; containerized microservices.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Django</span>
+          <span class="tech-pill">Kubernetes</span>
+          <span class="tech-pill">Prometheus</span>
+          <span class="tech-pill">Grafana</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/Django_To-Do_App_on_Minikube" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#todo">📌 Case Study</a>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">🚀 CI/CD Pipeline (Jenkins & Docker)</h3>
+        <p class="proj-desc">Fully automated pipeline: build → test → image → deploy. Integrates GitHub webhooks, Jenkins, Docker & deployment strategies.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Jenkins</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">GitHub Actions</span>
+          <span class="tech-pill">Shell</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/Django_To-Do_App_CI_CD" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#cicd">📌 Case Study</a>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">🧱 Two-Tier Flask + MySQL App</h3>
+        <p class="proj-desc">Dockerized two-tier app (Flask frontend + MySQL backend) with networked containers and health checks for reliability.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Flask</span>
+          <span class="tech-pill">MySQL</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Healthchecks</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#flask">📌 Case Study</a>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">☁️ Kubernetes Cluster on AWS EKS</h3>
+        <p class="proj-desc">Production-grade EKS with autoscaling, centralized monitoring and secret management (KMS) — secure & scalable infra.</p>
+        <div class="tech-row">
+          <span class="tech-pill">AWS EKS</span>
+          <span class="tech-pill">Autoscaling</span>
+          <span class="tech-pill">KMS</span>
+          <span class="tech-pill">Prometheus</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#eks">📌 Case Study</a>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="card-proj" role="listitem">
+      <div>
+        <h3 class="proj-title">🧠 Infrastructure as Code with Terraform</h3>
+        <p class="proj-desc">Modular Terraform templates for repeatable provisioning of AWS resources — versioned, modular and reusable modules.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Terraform</span>
+          <span class="tech-pill">Modules</span>
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">IaC</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="proj-btn" href="https://avatar1992.github.io/#projects" target="_blank" rel="noopener">🔗 Live Demo</a>
+        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="proj-btn proj-btn-ghost" href="/case-studies.html#terraform">📌 Case Study</a>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- ===== End Projects Grid ===== -->
+
 
     <!-- RESUME -->
     <section id="resume" class="card" aria-labelledby="resume-heading">
@@ -422,4 +558,3 @@
   </footer>
 </body>
 </html>
-```
