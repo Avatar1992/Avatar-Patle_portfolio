@@ -2,78 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case Studies — Avatar Patle</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header>
   <div class="logo container"><a href="index.html">Avatar Patle</a></div>
+  <nav class="container">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html" class="active">Case Studies</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
+
 <main class="container">
-  <h1>Case Studies</h1>
 
+  <h1>DevOps Case Studies</h1>
+  <p class="muted">Selected professional & personal projects showcasing automation, cloud & scalable DevOps solutions.</p>
+  <br>
+
+  <!-- CASE STUDY 1 -->
   <section id="telecom" class="card section">
-    <h2>Telecom NOC ETL Dashboard</h2>
-    <p class="muted">Flask · PostgreSQL · Docker · Grafana · Terraform</p>
-    <h3>Problem</h3>
-    <p>Multiple OSS systems produced scattered alarms, lacking centralized visibility. Manual triage slowed incident response.</p>
-    <h3>Solution</h3>
-    <p>Built containerized ingestion services to normalize alarm data into PostgreSQL, powering Grafana dashboards and alerts. Infrastructure provisioned by Terraform and deployed via CI pipelines.</p>
-    <h3>Impact</h3>
+    <h2>Telecom NOC ETL Monitoring Platform</h2>
+    <p class="muted">Flask · PostgreSQL · Grafana · Terraform · Docker</p>
+
+    <p><strong>Problem:</strong> Telecom NOC lacked unified alarm analytics & real-time dashboards.</p>
+    <p><strong>Solution:</strong> Automated ETL, Grafana dashboards & infra provisioning via Terraform.</p>
+
+    <div class="diagram">
+      <img src="assets/diagram-telecom.png" alt="Telecom Architecture Diagram (placeholder)">
+      <p class="muted small">*Architecture diagram placeholder — will replace with final PNG</p>
+    </div>
+
     <ul>
-      <li>Centralized visibility and dashboards for NOC teams.</li>
-      <li>Faster triage and reduced incident response time (example: ~40% improvement).</li>
+      <li>Automated ingestion pipeline for 100k+ events/day</li>
+      <li>Docker-based microservices for modular scaling</li>
+      <li>High-visibility alert dashboards for NOC teams</li>
     </ul>
-    <p class="links"><a href="https://github.com/Avatar1992/telecom-noc-app" target="_blank">Repo</a></p>
+
+    <p class="links"><a href="https://github.com/Avatar1992/telecom-noc-app" target="_blank">GitHub ↗</a></p>
   </section>
 
-  <section id="cicd" class="card section">
-    <h2>Flask Inventory & DevOps Automation</h2>
-    <p class="muted">Flask · MySQL · Docker · GitHub Actions</p>
-    <h3>Problem</h3>
-    <p>Manual deployments and inconsistent environments caused frequent regressions.</p>
-    <h3>Solution</h3>
-    <p>Created a Flask REST API for inventory management, containerized services, and implemented GitHub Actions pipelines for automated build/test/deploy.</p>
-    <h3>Impact</h3>
-    <ul>
-      <li>Standardized deployments and reduced manual errors.</li>
-      <li>Shorter deploy cycles and reproducible environments.</li>
-    </ul>
-    <p class="links"><a href="https://github.com/Avatar1992/flask-inventory-devops" target="_blank">Repo</a></p>
-  </section>
-
-  <section id="aidops" class="card section">
-    <h2>AIDOps — Agentic DevOps Automation</h2>
-    <p class="muted">Docker · CI/CD · Automation</p>
-    <h3>Overview</h3>
-    <p>Proof-of-concept exploring automated DevOps/ML-ops workflows and agentic automation to reduce repetitive tasks in pipelines.</p>
-    <h3>Outcome</h3>
-    <p>Demonstrates automation patterns and tooling that can be integrated into production pipelines.</p>
-    <p class="links"><a href="https://github.com/Avatar1992/aidops-agentic-devops" target="_blank">Repo</a></p>
-  </section>
-
-  <section id="multifunc" class="card section">
-    <h2>Full-Stack Flask App with MySQL</h2>
-    <p class="muted">Flask · MySQL · Docker</p>
-    <h3>Problem</h3>
-    <p>Need for a demo app that showcases backend + database integration and deployability.</p>
-    <h3>Solution</h3>
-    <p>Developed modular Flask app with MySQL back-end, containerized for simple deployment.</p>
-    <p class="links"><a href="https://github.com/Avatar1992/multifunction-flask-app-with-mysql" target="_blank">Repo</a></p>
-  </section>
-
+  <!-- CASE STUDY 2 -->
   <section id="argocd" class="card section">
-    <h2>Node.js Microservices with ArgoCD</h2>
-    <p class="muted">Node.js · Kubernetes · ArgoCD · Docker</p>
-    <h3>Problem</h3>
-    <p>Monolithic codebase limiting releases and scaling.</p>
-    <h3>Solution</h3>
-    <p>Refactored into independent Node microservices, used ArgoCD for GitOps deployments to Kubernetes, and added per-service CI pipelines.</p>
-    <p class="links"><a href="https://github.com/Avatar1992/node-microservices-argocd" target="_blank">Repo</a></p>
+    <h2>GitOps Microservices Pipeline with ArgoCD</h2>
+    <p class="muted">Node.js · Kubernetes · ArgoCD · GitOps</p>
+
+    <p><strong>Goal:</strong> Enable safe, independent microservice deployment.</p>
+    <p><strong>Solution:</strong> GitOps automation with ArgoCD for progressive delivery.</p>
+
+    <div class="diagram">
+      <img src="assets/diagram-gitops.png" alt="GitOps Kubernetes Architecture Diagram placeholder">
+      <p class="muted small">*Diagram will be replaced</p>
+    </div>
+
+    <ul>
+      <li>Automated rollouts & health-checks</li>
+      <li>Rollback on failure using ArgoCD sync policies</li>
+      <li>Infrastructure as Code for consistent clusters</li>
+    </ul>
+
+    <p class="links"><a href="https://github.com/Avatar1992/node-microservices-argocd" target="_blank">GitHub ↗</a></p>
+  </section>
+
+  <!-- CASE STUDY 3 -->
+  <section id="cicd" class="card section">
+    <h2>Inventory App with CI/CD Automation</h2>
+    <p class="muted">Flask · Docker · GitHub Actions</p>
+
+    <div class="diagram">
+      <img src="assets/diagram-cicd.png" alt="CI/CD Pipeline Diagram placeholder">
+      <p class="muted small">*Diagram coming soon</p>
+    </div>
+
+    <ul>
+      <li>Zero-touch deployments triggered on merge</li>
+      <li>Static analysis + automated tests per build</li>
+      <li>Containerized app for reliable releases</li>
+    </ul>
+
+    <p class="links"><a href="https://github.com/Avatar1992/flask-inventory-devops" target="_blank">GitHub ↗</a></p>
+  </section>
+
+  <!-- CASE STUDY 4 -->
+  <section id="agentic" class="card section">
+    <h2>AIDevOps — Agentic Pipeline Bot</h2>
+    <p class="muted">Python · Docker · AI Workflows</p>
+    
+    <div class="diagram">
+      <img src="assets/diagram-agent.png" alt="AI Agent Architecture placeholder">
+    </div>
+
+    <ul>
+      <li>Automated DevOps tasks through smart workflow agent</li>
+      <li>Event-driven infra checks + deployment automation</li>
+    </ul>
+
+    <p class="links"><a href="https://github.com/Avatar1992/aidops-agentic-devops" target="_blank">GitHub ↗</a></p>
+  </section>
+
+  <!-- CASE STUDY 5 -->
+  <section id="noc" class="card section">
+    <h2>Multi-function Cloud Platform</h2>
+    <p class="muted">Flask · MySQL · Docker Compose</p>
+
+    <div class="diagram">
+      <img src="assets/diagram-noc.png" alt="Cloud Architecture placeholder">
+    </div>
+
+    <ul>
+      <li>Cloud apps for user and incident management</li>
+      <li>Dockerized full stack with modular components</li>
+    </ul>
+
+    <p class="links"><a href="https://github.com/Avatar1992/multifunction-flask-app-with-mysql" target="_blank">GitHub ↗</a></p>
   </section>
 
 </main>
-<footer><div class="container">© 2025 Avatar Patle</div></footer>
+
+<footer>
+  <div class="container">© 2025 Avatar Patle — DevOps Case Studies</div>
+</footer>
+
 </body>
 </html>
