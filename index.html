@@ -1,85 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Avatar Patle — DevOps & Cloud Engineer</title>
-<link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Avatar Patle — DevOps & Cloud Engineer (India + Remote)</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Avatar Patle — DevOps & Cloud Engineer. I build scalable, automated cloud infrastructure & delivery pipelines. AWS, Kubernetes, Terraform, CI/CD. Open to India & Global Remote roles.">
+  <meta name="keywords" content="DevOps, Cloud Engineer, AWS, Kubernetes, Terraform, CI/CD, SRE, Docker, GitOps, Avatar Patle">
+  <meta name="author" content="Avatar Singh Patle">
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:title" content="Avatar Patle — DevOps & Cloud Engineer">
+  <meta property="og:description" content="I build scalable cloud infrastructure & automated delivery pipelines. Open to India & global remote roles.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avatar Patle Portfolio">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Avatar Patle — DevOps & Cloud Engineer">
+  <meta name="twitter:description" content="I build scalable cloud infrastructure & automated delivery pipelines. Open to India & global remote roles.">
+
+  <!-- Structured data (Organization + Person) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Avatar Singh Patle",
+    "url":"https://avatar1992.github.io/Avatar-Patle_portfolio/",
+    "sameAs":[
+      "https://github.com/Avatar1992",
+      "https://www.linkedin.com/in/avatar-patle-devops-cloud905144226"
+    ],
+    "jobTitle":"DevOps & Cloud Engineer",
+    "address": {
+      "@type":"PostalAddress",
+      "addressLocality":"India"
+    }
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header>
-  <div class="logo container"><a href="index.html">Avatar Patle</a></div>
-  <nav class="container" aria-label="Main navigation">
-    <div style="margin-left:auto">
-      <a href="index.html">Home</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="resume.html">Resume</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-</header>
+  <header>
+    <div class="logo container"><a href="index.html">Avatar Patle</a></div>
+    <nav class="container" aria-label="Main navigation">
+      <div style="margin-left:auto">
+        <a href="index.html">Home</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-<main class="container">
-  <!-- Hero Section -->
-  <section class="hero glass">
-    <div class="hero-left">
-      <h1 class="h-title">DevOps & Cloud Engineer</h1>
-      <p class="h-sub">
-        I automate cloud infrastructure & build scalable delivery pipelines.
-      </p>
+  <main class="container">
+    <!-- Hero Section (Glass + Circle Avatar) -->
+    <section class="hero glass" role="region" aria-label="Introduction">
+      <div class="hero-left">
+        <h1 class="h-title">DevOps & Cloud Engineer</h1>
+        <p class="h-sub">I build scalable, automated cloud infrastructure & delivery pipelines — AWS, Kubernetes, Terraform, Observability, CI/CD.</p>
 
-      <div class="tech-icons">
-        <span>AWS</span><span>K8s</span><span>Terraform</span>
-        <span>Docker</span><span>Linux</span><span>CI/CD</span>
+        <!-- Skill icons (official colored logos via simpleicons CDN) -->
+        <div class="skill-icons" aria-hidden="false" role="list">
+          <img src="https://cdn.simpleicons.org/aws/FF9900" alt="AWS logo" title="AWS" loading="lazy">
+          <img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes logo" title="Kubernetes" loading="lazy">
+          <img src="https://cdn.simpleicons.org/terraform/7B42BC" alt="Terraform logo" title="Terraform" loading="lazy">
+          <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker logo" title="Docker" loading="lazy">
+          <img src="https://cdn.simpleicons.org/linux/000000" alt="Linux logo" title="Linux" loading="lazy">
+          <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions logo" title="GitHub Actions" loading="lazy">
+        </div>
+
+        <div class="cta" role="navigation" aria-label="Call to actions">
+          <a class="btn" href="case-studies.html">View Projects 🚀</a>
+          <a class="btn ghost" href="https://github.com/Avatar1992" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="btn ghost" href="resume.html">Resume (PDF)</a>
+        </div>
+
+        <p class="availability" aria-label="Availability">
+          <strong>Actively seeking:</strong> DevOps · Cloud · SRE roles — <em>India + Global Remote</em>
+        </p>
       </div>
 
-      <div class="cta">
-        <a class="btn" href="case-studies.html">View Projects 🚀</a>
-        <a class="btn ghost" href="https://github.com/Avatar1992" target="_blank">GitHub ↗</a>
+      <div class="hero-photo" aria-hidden="false">
+        <!-- circle avatar style -->
+        <img src="assets/avatar.png" alt="Avatar Singh Patle — profile photo" width="155" height="155">
       </div>
+    </section>
 
-      <p class="availability">
-        Actively seeking: <strong>DevOps / Cloud / SRE roles</strong> (India + Remote)
-      </p>
-    </div>
+    <!-- Featured Projects -->
+    <section class="section" aria-labelledby="featured-work">
+      <h2 id="featured-work">Featured Work</h2>
 
-    <div class="hero-photo">
-      <img src="assets/avatar.png" alt="Avatar Patle">
-    </div>
-  </section>
+      <div class="grid" role="list">
+        <article class="card" role="listitem" aria-labelledby="telecom-title">
+          <h3 id="telecom-title">Telecom NOC ETL Dashboard</h3>
+          <p class="muted">Flask · PostgreSQL · Grafana · Terraform</p>
+          <p>Centralized alarm analytics and dashboards for NOC monitoring. Containerized ingestion services + infra automation.</p>
+          <p class="links"><a href="case-studies.html#telecom">Case Study →</a></p>
+        </article>
 
-  <!-- Projects Grid -->
-  <section class="section">
-    <h2>Featured Work</h2>
+        <article class="card" role="listitem" aria-labelledby="gitops-title">
+          <h3 id="gitops-title">GitOps Microservices + ArgoCD</h3>
+          <p class="muted">Node.js · Kubernetes · ArgoCD</p>
+          <p>GitOps-driven deployments with ArgoCD and per-service CI for safer rollouts and independent releases.</p>
+          <p class="links"><a href="case-studies.html#argocd">Case Study →</a></p>
+        </article>
 
-    <div class="grid">
-      <article class="card">
-        <h3>Telecom NOC ETL Dashboard</h3>
-        <p class="muted">Flask · PostgreSQL · Grafana · Terraform</p>
-        <p>Centralized alarm analytics and dashboards for NOC monitoring.</p>
-        <p class="links"><a href="case-studies.html#telecom">Case Study →</a></p>
-      </article>
+        <article class="card" role="listitem" aria-labelledby="inventory-title">
+          <h3 id="inventory-title">Inventory App & CI/CD Automation</h3>
+          <p class="muted">Flask · Docker · GitHub Actions</p>
+          <p>Containerized inventory management and automated pipelines for consistent, repeatable deployments.</p>
+          <p class="links"><a href="case-studies.html#cicd">Case Study →</a></p>
+        </article>
+      </div>
+    </section>
 
-      <article class="card">
-        <h3>GitOps Microservices + ArgoCD</h3>
-        <p class="muted">Node.js · Kubernetes · GitOps</p>
-        <p>Independent deployments & automated rollouts using ArgoCD.</p>
-        <p class="links"><a href="case-studies.html#argocd">Case Study →</a></p>
-      </article>
+    <!-- Contact CTA -->
+    <section class="section" aria-label="Contact">
+      <h2>Contact</h2>
+      <p class="muted">Email: <a href="mailto:patleavatar@gmail.com">patleavatar@gmail.com</a> · <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    </section>
+  </main>
 
-      <article class="card">
-        <h3>Inventory App & CI/CD Automation</h3>
-        <p class="muted">Flask · Docker · GitHub Actions</p>
-        <p>Automated build/test/deploy pipelines with containerization.</p>
-        <p class="links"><a href="case-studies.html#cicd">Case Study →</a></p>
-      </article>
-    </div>
-  </section>
-</main>
+  <footer>
+    <div class="container">© 2025 Avatar Patle — DevOps & Cloud Engineer</div>
+  </footer>
 
-<footer>
-  <div class="container">© 2025 Avatar Patle — DevOps Portfolio</div>
-</footer>
-
+  <!-- small accessibility + performance script -->
+  <script>
+    // prefer-reduced-motion respect
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.setProperty('animation', 'none');
+    }
+  </script>
 </body>
 </html>
