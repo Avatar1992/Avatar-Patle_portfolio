@@ -1,571 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Avatar Singh Patle — DevOps & Cloud Engineer</title>
-
-  <!-- Pico CSS (lightweight base) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
-  <!-- Google Fonts (Font A: Poppins + JetBrains Mono) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg-start: #071028;
-      --bg-end:   #0b132b;
-      --panel: rgba(255,255,255,0.04); /* glass panel tint */
-      --panel-strong: rgba(255,255,255,0.06);
-      --accent: #38bdf8;
-      --accent-2: #facc15;
-      --muted: #93a3b6;
-      --glass-border: rgba(255,255,255,0.08);
-      --btn-radius: 999px; /* pill shape (Shape 2) */
-    }
-
-    /* Single background applied to entire page */
-    html,body { height: 100%; }
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      color: #e6eef8;
-      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    /* NAV */
-    nav.container-fluid{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:.7rem 1rem;
-      background: transparent; /* keep single background visible */
-      border-bottom: 1px solid rgba(255,255,255,0.02);
-      backdrop-filter: blur(4px);
-    }
-    nav strong{color:var(--accent);font-size:1.05rem;}
-    nav ul{display:flex;gap:.65rem;align-items:center;margin:0;padding:0;list-style:none;}
-    nav a{color:var(--muted);text-decoration:none;}
-    nav a:hover{color:var(--accent-2);}
-
-    /* HERO (uses the single page background) */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap:1.6rem;
-      align-items:center;
-      padding:3rem 1rem;
-    }
-
-    .hero-left h1{
-      margin:0 0 .3rem 0;
-      font-size:2.15rem;
-      color:var(--accent);
-      letter-spacing:0.2px;
-    }
-    .role{ color:var(--accent-2); font-weight:600; margin-bottom:.4rem; }
-    .hero-left p{ color:var(--muted); max-width:760px; margin-top:.6rem; line-height:1.55; }
-
-    /* DP */
-    .hero-right{display:flex;justify-content:center;align-items:center;}
-    .dp-wrap{
-      width:300px;height:300px;border-radius:50%;
-      padding:6px;
-      background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(250,204,21,0.03));
-      box-shadow:0 10px 40px rgba(2,6,23,0.6), inset 0 0 30px rgba(56,189,248,0.02);
-      display:flex;align-items:center;justify-content:center;
-      transition:transform .32s ease, box-shadow .32s ease;
-      border: 1px solid rgba(255,255,255,0.02);
-    }
-    .dp-wrap:hover{ transform:scale(1.03); box-shadow:0 18px 48px rgba(2,6,23,0.75); }
-    .dp-wrap img{ width:100%; height:100%; object-fit:cover; border-radius:50%; display:block; filter:contrast(1.02) saturate(1.03); }
-
-    /* Buttons (pill style) */
-    .hero-actions{ margin-top:1.05rem; display:flex; gap:.6rem; flex-wrap:wrap; }
-    .btn-cta{
-      display:inline-flex; align-items:center; gap:.6rem;
-      padding:.62rem .95rem; font-weight:700; text-decoration:none;
-      border-radius:var(--btn-radius); border:none; cursor:pointer;
-      transition: box-shadow .18s ease, transform .12s ease;
-      color:#041025;
-    }
-    .btn-primary{ background: var(--accent); color:#041025; box-shadow: 0 6px 18px rgba(56,189,248,0.08); }
-    .btn-primary:hover{ transform:translateY(-3px); box-shadow: 0 18px 40px rgba(56,189,248,0.14); }
-    .btn-ghost{
-      background: transparent; color:var(--accent); border:1px solid var(--glass-border);
-      backdrop-filter: blur(6px);
-    }
-    .btn-ghost:hover{ background: rgba(56,189,248,0.03); box-shadow: 0 10px 30px rgba(56,189,248,0.06); }
-
-    /* Main container — cards use glass look but single page background remains */
-    main.container{ max-width:1100px; margin:1.75rem auto; padding:0 1rem; }
-
-    .card{
-      background: var(--panel);
-      border-radius:12px;
-      padding:1.4rem;
-      margin-bottom:1.05rem;
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px) saturate(1.02);
-      box-shadow: 0 6px 28px rgba(2,6,23,0.6);
-    }
-
-    /* About layout */
-    #about .about-grid{ display:grid; grid-template-columns: 1fr 320px; gap:1rem; align-items:center; }
-
-    .skills{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:.6rem; justify-content:flex-start; }
-    .badge{ background: rgba(255,255,255,0.02); padding:.45rem .8rem; border-radius:999px; font-family:'JetBrains Mono',monospace; color:var(--accent); border: 1px solid rgba(255,255,255,0.02); }
-
-    /* Projects */
-    .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; margin-top:.6rem; }
-    .project{ padding:1rem; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02); }
-    .project h3{ margin:0 0 .35rem 0; color:var(--accent); }
-    .project p{ color:var(--muted); margin-bottom:.6rem; }
-    .project .project-btn{ display:inline-block; padding:.45rem .85rem; border-radius:var(--btn-radius); background:var(--accent); color:#041025; text-decoration:none; font-weight:700; }
-
-    /* Resume layout (glass) */
-    #resume .resume-grid{ display:grid; grid-template-columns: 1fr 340px; gap:1.1rem; margin-top:.6rem; }
-    .cv-left{ padding-right:0.25rem; }
-    .cv-section{ margin-bottom:1rem; }
-    .cv-section h4{ margin:.18rem 0 .5rem 0; color:var(--accent); font-size:1rem; }
-
-    .timeline{ list-style:none; padding:0; margin:0; color:var(--muted); }
-    .timeline li{ margin-bottom:.6rem; }
-
-    /* Right aside (quick card) */
-    aside.quick-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.02); }
-
-    /* Contact form — dark inputs */
-    #contact input[type="text"],
-    #contact input[type="email"]{
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.03);
-      color: #e6eef8;
-      padding:.58rem .7rem;
-      border-radius:8px;
-    }
-    #contact input:focus{
-      outline: none;
-      box-shadow: 0 6px 20px rgba(56,189,248,0.08);
-      border-color: rgba(56,189,248,0.6);
-    }
-    #contact button.btn-cta{ background:var(--accent); color:#041025; border-radius:var(--btn-radius); padding:.6rem 1rem; font-weight:700; border:none; }
-
-    footer.container{ padding:1rem; text-align:center; color:var(--muted); font-size:.95rem; margin-top:1rem; }
-
-    /* Responsive adjustments */
-    @media (max-width:920px){
-      .hero{ grid-template-columns: 1fr; text-align:center; gap:1rem; }
-      .hero-right{ margin-top:.25rem; }
-      .hero-left p{ margin:0 auto; }
-      #about .about-grid{ grid-template-columns: 1fr; }
-      #resume .resume-grid{ grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Avatar Patle — DevOps & Cloud Engineer</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-
 <body>
-  <!-- NAV -->
-  <nav class="container-fluid" role="navigation" aria-label="Main navigation">
-    <div><strong>Avatar Singh Patle</strong></div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero" role="banner">
-    <div class="hero-left">
-      <h1>AVATAR SINGH PATLE</h1>
-      <div class="role">DevOps & AWS Cloud Engineer — 5.2+ years</div>
-      <p>
-        I design and maintain CI/CD pipelines, automate cloud infrastructure (Terraform / CloudFormation / Ansible),
-        and operate containerized workloads on AWS (ECS, EKS, Fargate). I focus on scalable, secure systems with strong monitoring and automation.
-      </p>
-
-      <div class="hero-actions" aria-label="Primary actions">
-        <a class="btn-cta btn-primary" href="Avatar_Resume.pdf" download>⬇️ Download Resume</a>
-        <a class="btn-cta btn-ghost" href="#resume">📄 View Resume</a>
-        <a class="btn-cta btn-ghost" href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn-cta btn-ghost" href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a>
+  <header>
+    <div class="logo container"><a href="index.html">Avatar Patle</a></div>
+    <nav class="container" aria-label="Main navigation">
+      <div style="margin-left:auto">
+        <a href="index.html">Home</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
       </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="dp-wrap" title="Avatar Singh Patle">
-        <img src="https://avatars.githubusercontent.com/u/157494778?v=4" alt="Avatar Singh Patle — profile photo" />
-      </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- MAIN -->
-  <main class="container" role="main">
-    <!-- ABOUT -->
-    <section id="about" class="card" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <div class="about-grid">
-        <div>
-          <p style="color:var(--muted);margin-top:.3rem">
-            I'm a DevOps & Cloud Engineer passionate about automation, observability and building repeatable infrastructure.
-            I specialize in containerization, CI/CD, and secure cloud architectures across AWS and hybrid environments.
-          </p>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <p class="muted">Avatar Singh Patle — DevOps & Cloud Engineer</p>
+        <h1 class="h-title">I build scalable, automated cloud infrastructure & delivery pipelines</h1>
+        <p class="h-sub">AWS · Kubernetes · Terraform · CI/CD · Observability · Docker</p>
 
-          <div style="margin-top:.6rem">
-            <strong style="color:var(--accent)">Contact</strong>
-            <div style="color:var(--muted);margin-top:.35rem">
-              <div>Email: <a href="mailto:Patleavatar@gmail.com">Patleavatar@gmail.com</a></div>
-              <div>Phone: <a href="tel:+919009120469">+91 90091 20469</a></div>
-              <div>Location: Pune, India</div>
-            </div>
-          </div>
+        <div class="cta">
+          <a class="btn" href="case-studies.html">View Case Studies</a>
+          <a class="btn ghost" href="https://github.com/Avatar1992" target="_blank">View GitHub</a>
+          <a class="btn" href="resume.html">Download Resume</a>
         </div>
 
-        <aside style="text-align:center;">
-          <div style="border-radius:10px;padding:.6rem;background:transparent;border:1px solid rgba(255,255,255,0.02);">
-            <div style="font-weight:700;color:var(--accent);">Key Skills</div>
-            <div class="skills" style="justify-content:center;margin-top:.6rem;">
-              <span class="badge">linux </span>
-              <span class="badge">Python</span>
-              <span class="badge">AWS</span>
-              <span class="badge">Terraform</span>
-              <span class="badge">Docker</span>
-              <span class="badge">Kubernetes</span>
-              <span class="badge">Jenkins</span>
-              <span class="badge">Prometheus</span>
-            </div>
-          </div>
-        </aside>
+        <div style="margin-top:18px;color:var(--muted)">
+          <strong>Actively seeking:</strong> DevOps / Cloud / SRE roles — Remote & On-site
+        </div>
+      </div>
+
+      <div>
+        <img src="assets/avatar.png" alt="Avatar" class="avatar">
       </div>
     </section>
 
-    <!-- PROJECTS -->
-  <!-- ===== Projects (Glassmorphic Grid) - REPLACE your current <section id="projects"> with this block ===== -->
-<section id="projects" class="card" aria-labelledby="projects-heading">
-  <h2 id="projects-heading" style="margin:0;color:var(--accent);">Featured Projects</h2>
-  <p style="color:var(--muted);margin-top:.45rem">Real-world automation & cloud solutions — click to view code, demo or read case study.</p>
+    <section class="section">
+      <h2>Highlighted Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Telecom NOC ETL Dashboard</h3>
+          <p class="muted">Flask · PostgreSQL · Docker · Grafana · Terraform</p>
+          <p style="margin-top:8px;color:var(--muted)">Consolidates alarms from multiple OSS feeds, provides dashboards and alerting for NOC operations. Implemented containerized services and automated infra provisioning.</p>
+          <p class="links" style="margin-top:12px"><a href="case-studies.html#telecom">Read case study</a> · <a href="https://github.com/Avatar1992/telecom-noc-app" target="_blank">Repo</a></p>
+        </article>
 
-  <style>
-    /* Scoped styles for Projects Grid - paste inside index.html as-is */
-    #projects .grid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-top: 0.75rem;
-    }
+        <article class="card">
+          <h3>Flask Inventory & DevOps Automation</h3>
+          <p class="muted">Flask · MySQL · Docker · GitHub Actions</p>
+          <p style="margin-top:8px;color:var(--muted)">Inventory management system with CI/CD pipelines and containerized deployments to ensure consistent rollouts across environments.</p>
+          <p class="links" style="margin-top:12px"><a href="case-studies.html#cicd">Read case study</a> · <a href="https://github.com/Avatar1992/flask-inventory-devops" target="_blank">Repo</a></p>
+        </article>
 
-    #projects .card-proj{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.03);
-      border-radius: 12px;
-      padding: 1rem;
-      transition: transform .22s ease, box-shadow .22s ease;
-      box-shadow: 0 8px 30px rgba(2,6,23,0.45);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:160px;
-    }
-    #projects .card-proj:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 18px 48px rgba(56,189,248,0.06);
-    }
-
-    #projects .proj-title{color:var(--accent);margin:0 0 .3rem 0;font-size:1.02rem;}
-    #projects .proj-desc{color:var(--muted);font-size:.95rem;margin:0 0 .7rem 0;line-height:1.45}
-
-    /* tech icons row */
-    #projects .tech-row{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.6rem;}
-    #projects .tech-pill{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:.25rem .45rem;border-radius:999px;font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:.82rem;}
-
-    /* pill buttons (BTN-1 match) */
-    #projects .btn-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:auto;}
-    .proj-btn{
-      display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:999px;font-weight:800;
-      text-decoration:none;color:#041026;background:linear-gradient(90deg,var(--accent),#2bb1ee);
-      border:1px solid rgba(255,255,255,0.03);
-      transition:box-shadow .16s ease, transform .12s ease;
-      font-size:.86rem;
-    }
-    .proj-btn:hover{box-shadow:0 10px 28px rgba(56,189,248,0.12);transform:translateY(-2px);}
-
-    /* ghost button variant */
-    .proj-btn-ghost{
-      background:transparent;color:var(--accent);border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);font-weight:700;
-    }
-    .proj-btn-ghost:hover{background:rgba(255,255,255,0.02);color:var(--accent-2);}
-
-    @media (max-width:720px){
-      #projects .card-proj{min-height:185px;}
-    }
-  </style>
-
-  <div class="grid" role="list">
-    <!-- 1 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">📊 Telecom NOC ETL Dashboard</h3>
-        <p class="proj-desc">Real-time ETL pipeline to process OSS alarms — Python, PostgreSQL, Flask, and Chart.js for live visualization and alerting.</p>
-        <div class="tech-row">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Postgres</span>
-          <span class="tech-pill">Flask</span>
-          <span class="tech-pill">Chart.js</span>
-        </div>
-      </div>
-      <div class="btn-row">
-        
-        <a class="proj-btn" href="https://github.com/Avatar1992/telecom-noc-app" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#etl">📌 Case Study</a>
-      </div>
-    </article>
-
-    <!-- 2 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">🧩 Django To-Do App on Minikube</h3>
-        <p class="proj-desc">Kubernetes deployment on Minikube with Prometheus & Grafana for full monitoring and alerts; containerized microservices.</p>
-        <div class="tech-row">
-          <span class="tech-pill">Django</span>
-          <span class="tech-pill">Kubernetes</span>
-          <span class="tech-pill">Prometheus</span>
-          <span class="tech-pill">Grafana</span>
-        </div>
-      </div>
-      <div class="btn-row">
-      
-        <a class="proj-btn" href="https://github.com/Avatar1992/Django_To-Do_App_on_Minikube" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#todo">📌 Case Study</a>
-      </div>
-    </article>
-
-    <!-- 3 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">🚀 CI/CD Pipeline (Jenkins & Docker)</h3>
-        <p class="proj-desc">Fully automated pipeline: build → test → image → deploy. Integrates GitHub webhooks, Jenkins, Docker & deployment strategies.</p>
-        <div class="tech-row">
-          <span class="tech-pill">Jenkins</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">GitHub Actions</span>
-          <span class="tech-pill">Shell</span>
-        </div>
-      </div>
-      <div class="btn-row">
-     
-        <a class="proj-btn" href="https://github.com/Avatar1992/Django_To-Do_App_CI_CD" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#cicd">📌 Case Study</a>
-      </div>
-    </article>
-
-    <!-- 4 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">🧱 Two-Tier Flask + MySQL App</h3>
-        <p class="proj-desc">Dockerized two-tier app (Flask frontend + MySQL backend) with networked containers and health checks for reliability.</p>
-        <div class="tech-row">
-          <span class="tech-pill">Flask</span>
-          <span class="tech-pill">MySQL</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">Healthchecks</span>
-        </div>
-      </div>
-      <div class="btn-row">
-    
-        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#flask">📌 Case Study</a>
-      </div>
-    </article>
-
-    <!-- 5 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">☁️ Kubernetes Cluster on AWS EKS</h3>
-        <p class="proj-desc">Production-grade EKS with autoscaling, centralized monitoring and secret management (KMS) — secure & scalable infra.</p>
-        <div class="tech-row">
-          <span class="tech-pill">AWS EKS</span>
-          <span class="tech-pill">Autoscaling</span>
-          <span class="tech-pill">KMS</span>
-          <span class="tech-pill">Prometheus</span>
-        </div>
-      </div>
-      <div class="btn-row">
-      
-        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#eks">📌 Case Study</a>
-      </div>
-    </article>
-
-    <!-- 6 -->
-    <article class="card-proj" role="listitem">
-      <div>
-        <h3 class="proj-title">🧠 Infrastructure as Code with Terraform</h3>
-        <p class="proj-desc">Modular Terraform templates for repeatable provisioning of AWS resources — versioned, modular and reusable modules.</p>
-        <div class="tech-row">
-          <span class="tech-pill">Terraform</span>
-          <span class="tech-pill">Modules</span>
-          <span class="tech-pill">AWS</span>
-          <span class="tech-pill">IaC</span>
-        </div>
-      </div>
-      <div class="btn-row">
-       
-        <a class="proj-btn" href="https://github.com/Avatar1992/Two_tier_flask-mysql-app" target="_blank" rel="noopener">💻 GitHub</a>
-        <a class="proj-btn proj-btn-ghost" href="case-studies.html#terraform">📌 Case Study</a>
-      </div>
-    </article>
-  </div>
-</section>
-<!-- ===== End Projects Grid ===== -->
-
-
-    <!-- RESUME -->
-    <section id="resume" class="card" aria-labelledby="resume-heading">
-      <h2 id="resume-heading">Resume</h2>
-      <p style="color:var(--muted);margin-top:.25rem;font-size:.93rem;">
-      </p>
-
-      <div class="resume-grid">
-        <!-- Left: Resume content -->
-        <div class="cv-left">
-          <div class="cv-section">
-            <h3 style="color:var(--accent);margin:0">Summary</h3>
-            <p style="color:var(--muted);margin-top:.45rem;line-height:1.45">
-              Over 5.2 years of experience as a DevOps & Cloud Engineer. Design, implement, and maintain CI/CD pipelines and automate build, test, and deployment processes.
-              Skilled in Terraform, CloudFormation, Ansible, Prometheus, Grafana, Python and shell scripting. Experienced in architecting and managing AWS environments and implementing IAM-based security best practices.
-            </p>
-          </div>
-
-          <div class="cv-section">
-            <h4>Experience</h4>
-            <ul class="timeline">
-              <li>
-                <strong>Reliance Property Project Limited, Pune</strong><br/>
-                <em>DevOps Cloud Support Engineer — Sep 2020 to present</em>
-                <ul style="color:var(--muted);margin-top:.35rem">
-                  <li>Ensure builds and deployments run smoothly; fix broken pipelines and failed deployments.</li>
-                  <li>Optimize pipeline performance and reduce build times.</li>
-                  <li>Manage containerized deployments (ECS, EKS, Fargate) and automate infrastructure (CloudFormation/Terraform).</li>
-                  <li>Work with AWS services: EC2, S3, RDS, IAM, VPC, etc.</li>
-                </ul>
-              </li>
-
-              <li style="margin-top:.6rem">
-                <strong>Accord Synergy Ltd, Pune</strong><br/>
-                <em>RNO (Airtel - Nokia Project) — Jul 2019 to Sep 2020</em>
-                <div style="color:var(--muted);margin-top:.3rem">
-                  Improved network efficiency, configured and maintained routers & switches, and worked with VLANs and routing protocols (OSPF, BGP).
-                </div>
-              </li>
-
-              <li style="margin-top:.6rem">
-                <strong>Secure Link Pvt Ltd, Pune</strong><br/>
-                <em>Project Coordinator — Feb 2017 to Jul 2019</em>
-                <div style="color:var(--muted);margin-top:.3rem">
-                  Managed project deliverables, DPR & MDB, coordinated cross-functional teams and tracked P&L for project tasks.
-                </div>
-              </li>
-
-              <li style="margin-top:.6rem">
-                <strong>Syncroute Infranet Pvt Ltd (MH)</strong><br/>
-                <em>DT Engineer — Mar 2016 to Feb 2017</em>
-                <div style="color:var(--muted);margin-top:.3rem">KPI improvement, customer complaint handling and throughput optimization.</div>
-              </li>
-
-              <li style="margin-top:.6rem">
-                <strong>Ahead Industry Pvt Ltd</strong><br/>
-                <em>DT Engineer — Mar 2015 to Feb 2016</em>
-                <div style="color:var(--muted);margin-top:.3rem">KPI analysis and customer support for network performance.</div>
-              </li>
-
-              <li style="margin-top:.6rem">
-                <strong>Mphasis, Indore</strong><br/>
-                <em>Tech C.S.R — Mar 2014 to Feb 2015</em>
-                <div style="color:var(--muted);margin-top:.3rem">Customer support & technical assistance.</div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-section">
-            <h4>Education</h4>
-            <div style="color:var(--muted)">
-              <strong>RGPV, Bhopal</strong> — B.E. in Electronic & Telecommunication Engineering, 2013<br/>
-              <strong>MP Board</strong> — 12th (2009) & 10th (2007)
-            </div>
-          </div>
-
-          <div class="cv-section">
-            <h4>Languages</h4>
-            <div style="color:var(--muted)">English, Hindi</div>
-          </div>
-        </div>
-         <div class="cv-section">
-        <h4>Certifications</h4>
-            <div style="color:var(--muted);line-height:1.45">
-              <div><strong>AI Fundamentals and the Cloud</strong> — Amazon Web Services, Issued Oct 2025 • Credential ID: 3UXBEXH7TM72</div>
-              <div style="margin-top:.25rem"><strong>AWS Services for AI Solutions</strong> — Amazon Web Services, Issued Oct 2025 • Credential ID: IR15J1YJ12KF</div>
-              <div style="margin-top:.25rem"><strong>DevOps and AI on AWS: AIOps and DevOps and Build Automation with Python</strong> — LearnQuest, Issued Jun 2025 • Credential ID: 7AEMZZYKRXZQ</div>
-              <div style="margin-top:.25rem"><strong>AWS Cloud Technical Essentials</strong> — Amazon Web Services, Issued Mar 2025 • Expires Mar 2027 • Credential ID: O3CJMRBM7PRJ</div>
-              <div style="margin-top:.25rem"><strong>Amazon Web Services (Additional)</strong> — Amazon Web Services, Issued Jun 2025 • Credential ID: BC2TZLVVA0NO</div>
-            </div>
-          </div>
-        </div>
-      </div>
-        <!-- Right: Quick info card -->
-        <aside class="quick-card">
-          <div style="text-align:center;margin-bottom:.6rem">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGF2zMzck-Fdw/profile-displayphoto-scale_400_400/B4DZk8ScfXGkAg-/0/1757653093641?e=1762992000&v=beta&t=RuQJF6v2mM-GPTETnvxPUmpVr1LEy2e395emI4XxmTU" alt="Avatar Patle" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid rgba(56,189,248,0.06)" />
-          </div>
-
-          <div style="margin-bottom:.55rem">
-            <strong style="color:var(--accent)">Contact</strong>
-            <div style="color:var(--muted);margin-top:.4rem">
-              <div><a href="mailto:Patleavatar@gmail.com">Patleavatar@gmail.com</a></div>
-              <div><a href="tel:+919009120469">+91 90091 20469</a></div>
-              <div style="margin-top:.4rem"><a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a></div>
-              <div style="margin-top:.25rem"><a href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a></div>
-            </div>
-          </div>
-
-          <div style="margin-top:.5rem">
-            <strong style="color:var(--accent)">Skills & Tools</strong>
-            <div style="margin-top:.45rem;color:var(--muted);line-height:1.5">
-              Linux (Shell) • Jenkins • GitHub Actions • Argo CD • Terraform • Ansible • Docker • Kubernetes • AWS • Prometheus • Grafana
-            </div>
-          </div>
-
-          <div style="margin-top:1rem;text-align:center">
-            <a class="btn-cta btn-primary" href="Avatar_Resume.pdf" download>⬇️ Download Resume</a>
-          </div>
-        </aside>
+        <article class="card">
+          <h3>Node Microservices + ArgoCD</h3>
+          <p class="muted">Node.js · Kubernetes · ArgoCD · Docker</p>
+          <p style="margin-top:8px;color:var(--muted)">GitOps-driven microservices with declarative deployments and independent release cycles for each service.</p>
+          <p class="links" style="margin-top:12px"><a href="case-studies.html#argocd">Read case study</a> · <a href="https://github.com/Avatar1992/node-microservices-argocd" target="_blank">Repo</a></p>
+        </article>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="card" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <p style="color:var(--muted)">Want to work together or need help with a cloud project? Send a quick message.</p>
-
-      <form onsubmit="event.preventDefault(); alert('Thanks — email: Patleavatar@gmail.com');" style="margin-top:.6rem; display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; justify-content:center;">
-        <input type="text" placeholder="Your name" aria-label="name" required style="max-width:420px;" />
-        <input type="email" placeholder="Your email" aria-label="email" required style="max-width:420px;" />
-        <button class="btn-cta" type="submit" style="background:var(--accent); color:#041025; border-radius:var(--btn-radius); padding:.6rem 1rem; font-weight:700; border:none;">Send Message</button>
-      </form>
+    <section class="section">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">Email: <a href="mailto:patleavatar@gmail.com">patleavatar@gmail.com</a> · <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank">LinkedIn</a></p>
     </section>
   </main>
 
-  <footer class="container" role="contentinfo">
-    <div>
-      <a href="https://github.com/Avatar1992" target="_blank" rel="noopener">GitHub</a> •
-      <a href="https://www.linkedin.com/in/avatar-patle-devops-cloud905144226" target="_blank" rel="noopener">LinkedIn</a> •
-      <a href="mailto:Patleavatar@gmail.com">Email</a>
-    </div>
-    <div style="margin-top:.35rem;color:var(--muted)">© Avatar Singh Patle — DevOps & Cloud Engineer</div>
+  <footer>
+    <div class="container">© 2025 Avatar Patle — DevOps & Cloud Engineer</div>
   </footer>
 </body>
 </html>
