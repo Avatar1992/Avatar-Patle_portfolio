@@ -3,7 +3,7 @@
 This is my professional portfolio showcasing my DevOps skills, real-world projects, CI/CD pipelines, automation work, and cloud engineering experience.
 
 🔗 **Live Portfolio Website** (GitHub Pages)  
-> Coming Soon: https://avatar1992.github.io/Avatar-Patle_portfolio/
+> https://avatar1992.github.io/Avatar-Patle_portfolio/
 
 ## 🎯 About Me
 I’m a DevOps & Cloud Engineer focusing on:
