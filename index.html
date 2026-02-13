@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Avatar — DevOps Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div id="bootScreen"></div>
+
+<div id="terminalWindow" class="hidden">
+
+  <div class="titlebar">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="title">avatar@cloud-console</span>
+  </div>
+
+  <div id="terminal" class="terminal">
+
+    <div id="output"></div>
+
+    <div class="input-line">
+      <span class="prompt">avatar@devops:~$</span>
+      <input id="commandInput" autofocus autocomplete="off" />
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
