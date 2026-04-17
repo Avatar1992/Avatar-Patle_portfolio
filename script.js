@@ -1,25 +1,36 @@
+// Typing effect
+const text = ["AWS Data Engineer", "PySpark Expert", "ETL & Data Lake Specialist"];
+let i = 0, j = 0;
+let current = "", deleting = false;
+
+function type() {
+  let word = text[i];
+
+  if (!deleting) {
+    current = word.substring(0, j++);
+    if (j > word.length) deleting = true;
+  } else {
+    current = word.substring(0, j--);
+    if (j < 0) {
+      deleting = false;
+      i = (i + 1) % text.length;
+    }
+  }
+
+  document.getElementById("typing").innerText = current;
+  setTimeout(type, deleting ? 50 : 100);
+}
+
+type();
+
 // Scroll animation
-function revealOnScroll() {
-  const elements = document.querySelectorAll(".reveal");
-
-  elements.forEach((el) => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - 100) {
+function reveal() {
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
       el.classList.add("active");
     }
   });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
-// Smooth scroll (future nav support)
-document.querySelectorAll("a[href^='#']").forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href"))
-      .scrollIntoView({ behavior: "smooth" });
-  });
-});
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
