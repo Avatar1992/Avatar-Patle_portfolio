@@ -1,27 +1,29 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  background: #020617;
   color: white;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('banner.jpg') no-repeat center center/cover;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-.overlay {
+/* CANVAS */
+#bgCanvas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: linear-gradient(135deg, #020617, #0f172a);
 }
 
+/* HERO CONTENT */
 .hero-content {
   position: relative;
   text-align: center;
@@ -53,11 +55,6 @@ body {
   color: black;
   border-radius: 8px;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-.buttons a:hover {
-  background: white;
 }
 
 /* CARDS */
@@ -70,15 +67,22 @@ body {
   backdrop-filter: blur(10px);
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* METRICS */
+.metrics {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.metrics h3 {
+  color: #38bdf8;
 }
 
 /* SKILLS */
 .skills {
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  gap: 15px;
+  gap: 10px;
 }
 
 /* PROJECT */
@@ -89,18 +93,6 @@ body {
   border-radius: 10px;
 }
 
-/* METRICS */
-.metrics {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-
-.metrics h3 {
-  color: #38bdf8;
-  font-size: 28px;
-}
-
 /* FOOTER */
 footer {
   text-align: center;
@@ -108,7 +100,7 @@ footer {
   color: #94a3b8;
 }
 
-/* ANIMATION */
+/* SCROLL ANIMATION */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
