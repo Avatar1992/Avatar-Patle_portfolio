@@ -1,4 +1,4 @@
-// Typing Effect
+// Typing effect
 const text = ["AWS Data Engineer", "PySpark Expert", "ETL Specialist"];
 let i = 0, j = 0, current = "", deleting = false;
 
@@ -21,7 +21,7 @@ function type() {
 }
 type();
 
-// Scroll Animation
+// Scroll animation
 function reveal() {
   document.querySelectorAll(".reveal").forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -32,7 +32,7 @@ function reveal() {
 window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
 
-// DATA FLOW ANIMATION
+// Data animation
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
