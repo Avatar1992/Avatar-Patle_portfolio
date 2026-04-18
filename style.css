@@ -7,12 +7,12 @@ body {
 
 /* HERO */
 .hero {
-  height: 100vh;
+  height: 70vh;
+  min-height: 500px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 /* CANVAS */
@@ -31,15 +31,15 @@ body {
 }
 
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   border: 4px solid #38bdf8;
-  margin-bottom: 15px;
 }
 
+/* TEXT */
 .hero h1 {
-  font-size: 42px;
+  font-size: 36px;
   color: #38bdf8;
 }
 
@@ -64,7 +64,6 @@ body {
   padding: 25px;
   border-radius: 15px;
   background: rgba(30,41,59,0.85);
-  backdrop-filter: blur(10px);
 }
 
 /* METRICS */
@@ -93,6 +92,12 @@ body {
   border-radius: 10px;
 }
 
+/* ARCHITECTURE IMAGE */
+.arch-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
 /* FOOTER */
 footer {
   text-align: center;
@@ -100,7 +105,7 @@ footer {
   color: #94a3b8;
 }
 
-/* SCROLL ANIMATION */
+/* ANIMATION */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
